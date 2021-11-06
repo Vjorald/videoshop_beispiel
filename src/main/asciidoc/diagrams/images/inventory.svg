@@ -124,7 +124,7 @@ ZpMi8QAAAABJRU5ErkJggg==" height="16" preserveAspectRatio="none" font-weight="no
       ><text x="108" y="420.958" clip-path="url(#clipPath1)" fill="rgb(0,0,40)" stroke="none" font-weight="normal" space="preserve"
       >+initialize() : void</text
       ><text x="108" y="407.958" clip-path="url(#clipPath1)" fill="rgb(0,0,40)" stroke="none" font-weight="normal" space="preserve"
-      >+InventoryInitializer( inventory : UniqueInventory, videoCatalog : VideoCatalog )</text
+      >+InventoryInitializer( inventory : UniqueInventory, lebensmittelCatalog : VideoCatalog )</text
       ><text x="283.5" space="preserve" y="376.958" clip-path="url(#clipPath1)" stroke="none"
       >InventoryInitializer</text
       ><rect x="647" y="367" clip-path="url(#clipPath1)" fill="rgb(178,178,178)" width="293" height="66" stroke="none"
@@ -239,7 +239,7 @@ ZpMi8QAAAABJRU5ErkJggg==" height="16" preserveAspectRatio="none" font-weight="no
       /><path fill="none" d="M620 145 L623 140 L626 145" clip-path="url(#clipPath1)" stroke="rgb(66,66,66)"
       /><path fill="none" d="M623 140 L623 382 L560 382" clip-path="url(#clipPath1)" stroke="rgb(66,66,66)"
       /><text x="627" space="preserve" y="163.958" clip-path="url(#clipPath1)" stroke="none"
-      >-videoCatalog</text
+      >-lebensmittelCatalog</text
       ><text x="605" space="preserve" y="163.958" clip-path="url(#clipPath1)" stroke="none"
       >1</text
     ></g

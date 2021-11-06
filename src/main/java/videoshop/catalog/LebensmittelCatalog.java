@@ -15,7 +15,7 @@
  */
 package videoshop.catalog;
 
-import videoshop.catalog.Disc.DiscType;
+import videoshop.catalog.Lebensmittel.LebensmittelType;
 
 import org.salespointframework.catalog.Catalog;
 import org.springframework.data.domain.Sort;
@@ -25,26 +25,26 @@ import org.springframework.data.domain.Sort;
  *
  * @author Oliver Gierke
  */
-public interface VideoCatalog extends Catalog<Disc> {
+public interface LebensmittelCatalog extends Catalog<Lebensmittel> {
 
 	static final Sort DEFAULT_SORT = Sort.by("productIdentifier").descending();
 
 	/**
-	 * Returns all {@link Disc}s by type ordered by the given {@link Sort}.
+	 * Returns all {@link Lebensmittel}s by type ordered by the given {@link Sort}.
 	 *
 	 * @param type must not be {@literal null}.
 	 * @param sort must not be {@literal null}.
 	 * @return the discs of the given type, never {@literal null}.
 	 */
-	Iterable<Disc> findByType(DiscType type, Sort sort);
+	Iterable<Lebensmittel> findByType(LebensmittelType type, Sort sort);
 
 	/**
-	 * Returns all {@link Disc}s by type ordered by their identifier.
+	 * Returns all {@link Lebensmittel}s by type ordered by their identifier.
 	 *
 	 * @param type must not be {@literal null}.
 	 * @return the discs of the given type, never {@literal null}.
 	 */
-	default Iterable<Disc> findByType(DiscType type) {
+	default Iterable<Lebensmittel> findByType(LebensmittelType type) {
 		return findByType(type, DEFAULT_SORT);
 	}
 }

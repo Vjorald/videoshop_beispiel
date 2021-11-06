@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
-import videoshop.catalog.Disc;
+import videoshop.catalog.Lebensmittel;
+
 import static org.salespointframework.core.Currencies.EURO;
 
 import java.util.*;
@@ -96,7 +97,7 @@ class InventoryController {
 		
 	}
 
-	private Object UniqueInventoryItem(Disc disc, Quantity of) {
+	private Object UniqueInventoryItem(Lebensmittel lebensmittel, Quantity of) {
 		// TODO Auto-generated method stub
 		return null;
 	}

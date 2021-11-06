@@ -26,43 +26,39 @@ import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
 
 // (｡◕‿◕｡)
-// Da der Shop DVD sowie BluRay verkaufen soll ist es sinnvoll eine gemeinsame Basisklasse zu erstellen.
 // Diese erbt von Product um die Catalog-Klasse aus Salespoint nutzen zu können.
 // Ein Primärschlüssel ist nicht notwendig, da dieser schon in Product definiert ist, alle anderen
 // JPA-Anforderungen müssen aber erfüllt werden.
 @Entity
-public class Disc extends Product {
+public class Lebensmittel extends Product {
 
-	public static enum DiscType {
-		BLURAY, DVD;
+
+	public static enum LebensmittelType {
+		Backzutaten, Brotaufstrich, Cerealien, Frische_und_Kuehlung, Getraenke, Getreide, Kaffe_und_Tee
+		,Konserven_und_fertiggerichte,Milch_und_Milchersatzprodukte,Oel_Essig_Gewuerze,Snacks,Suessigkeiten;
 	}
 
 	// (｡◕‿◕｡)
 	// primitive Typen oder Strings müssen nicht extra für JPA annotiert werden
-	private String genre, image;
-	private DiscType type;
+	private String image;
+	private LebensmittelType type;
 
 	// (｡◕‿◕｡)
-	// Jede Disc besitzt mehrere Kommentare, eine "1 zu n"-Beziehung -> @OneToMany für JPA
+	// Jeder Lebensmittel besitzt mehrere Kommentare, eine "1 zu n"-Beziehung -> @OneToMany für JPA
 	// cascade gibt an, was mit den Kindelementen (Comment) passieren soll wenn das Parentelement
 	// (Disc) mit der Datenbank "interagiert"
 	@OneToMany(cascade = CascadeType.ALL) //
 	private List<Comment> comments = new ArrayList<>();
 
 	@SuppressWarnings({ "unused", "deprecation" })
-	private Disc() {}
+	private Lebensmittel() {}
 
-	public Disc(String name, String image, Money price, String genre, DiscType type) {
+	public Lebensmittel(String name, String image, Money price, LebensmittelType type) {
 
 		super(name, price);
 
 		this.image = image;
-		this.genre = genre;
 		this.type = type;
-	}
-
-	public String getGenre() {
-		return genre;
 	}
 
 	public void addComment(Comment comment) {
@@ -83,7 +79,7 @@ public class Disc extends Product {
 		return image;
 	}
 
-	public DiscType getType() {
+	public LebensmittelType getType() {
 		return type;
 	}
 }

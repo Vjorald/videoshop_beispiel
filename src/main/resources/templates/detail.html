@@ -13,32 +13,31 @@
     <link th:href="@{/resources/css/style.css}" rel="stylesheet"
           href="../static/resources/css/style.css" type="text/css"/>
 
-    <title th:text="${disc.name}">Last Action Hero</title>
+    <title th:text="${lebensmittel.name}">Demerara Zucker</title>
 </head>
 <body>
 <div class="ui container">
     <header>
-        <h1 th:text="${disc.name}">Last Action Hero</h1>
+        <h1 th:text="${lebensmittel.name}">Demerara Zucker</h1>
     </header>
     <nav th:include="navigation :: navigation"></nav>
 
     <div class="ui items">
         <div class="item">
-            <div class="image">
+           <!--   <div class="image">
                 <img th:src="@{/resources/img/cover/{name}.jpg(name=${disc.image})}"
                      src="../static/resources/img/cover/lac.jpg"/>
-            </div>
+            </div> -->
             <div class="content">
-                <a class="header" th:text="${disc.name}">Last Action Hero</a>
+                <a class="header" th:text="${lebensmittel.name}">Demerara Zucker</a>
                 <div class="meta">
-                    <span th:text="${disc.genre}">Action</span>
-                    <span th:text="${{disc.price}}">9.99 €</span>
+                    <span th:text="${{lebensmittel.price}}">3.99 €</span>
                 </div>
                 <div class="description">
                     <p>Vorrat:</p>
                     <p th:text="${quantity}">10</p><br/>
                     <form class="ui form" method="post" th:action="@{/cart}" th:if="${orderable}">
-                        <input type="hidden" name="pid" value="0" th:value="${disc.id}"/>
+                        <input type="hidden" name="pid" value="0" th:value="${lebensmittel.id}"/>
                         <div class="field">
                             <label for="number">Anzahl</label>
                             <input id="number" type="number" name="number" min="1" max="5" step="1" value="1"/><br/>
@@ -55,7 +54,7 @@
     <div class="ui comments">
         <h3 class="ui dividing header" th:text="#{detail.comment.comments}">Kommentare</h3>
 
-        <div class="comment" th:each="comment : ${disc.comments}">
+        <div class="comment" th:each="comment : ${lebensmittel.comments}">
             <div class="content">
                 <div class="metadata">
                     <div class="rating">
@@ -67,7 +66,7 @@
             </div>
         </div>
 
-        <form class="ui reply form" role="form" th:action="@{/disc/{id}/comments(id=${disc.id})}" method="post">
+        <form class="ui reply form" role="form" th:action="@{/lebensmittel/{id}/comments(id=${lebensmittel.id})}" method="post">
             <div class="field">
                 <textarea id="comment" name="comment" cols="40" rows="5"></textarea><br/>
             </div>

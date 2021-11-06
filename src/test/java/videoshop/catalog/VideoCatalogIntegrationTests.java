@@ -18,36 +18,26 @@ package videoshop.catalog;
 import static org.assertj.core.api.Assertions.*;
 
 import videoshop.AbstractIntegrationTests;
-import videoshop.catalog.Disc.DiscType;
+import videoshop.catalog.Lebensmittel.LebensmittelType;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Integration tests for {@link VideoCatalog}.
+ * Integration tests for {@link LebensmittelCatalog}.
  *
  * @author Oliver Gierke
  * @author Andreas Zaschka
  */
 class VideoCatalogIntegrationTests extends AbstractIntegrationTests {
 
-	@Autowired VideoCatalog catalog;
+	@Autowired
+    LebensmittelCatalog catalog;
 
 	@Test
-	void findsAllBluRays() {
+	void findsAllBrotaufstriche() {
 
-		Iterable<Disc> result = catalog.findByType(DiscType.BLURAY);
-		assertThat(result).hasSize(9);
-	}
-
-	/**
-	 * @see #50
-	 */
-	@Test
-	void discsDontHaveAnyCategoriesAssigned() {
-
-		for (Disc disc : catalog.findByType(DiscType.BLURAY)) {
-			assertThat(disc.getCategories()).isEmpty();
-		}
+		Iterable<Lebensmittel> result = catalog.findByType(LebensmittelType.Brotaufstrich);
+		assertThat(result).hasSize(4);
 	}
 }

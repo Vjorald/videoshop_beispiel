@@ -42,7 +42,7 @@ class CatalogControllerIntegrationTests extends AbstractIntegrationTests {
 
 		Model model = new ExtendedModelMap();
 
-		String returnedView = controller.blurayCatalog(model);
+		String returnedView = controller.brotaufstrichCatalog(model);
 
 		assertThat(returnedView).isEqualTo("catalog");
 

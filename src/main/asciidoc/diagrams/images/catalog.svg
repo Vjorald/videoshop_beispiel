@@ -312,7 +312,7 @@ ZpMi8QAAAABJRU5ErkJggg==" height="16" preserveAspectRatio="none" font-weight="no
       /><text x="591" y="557.1379" clip-path="url(#clipPath1)" fill="rgb(0,0,40)" stroke="none" font-weight="normal" space="preserve"
       >+initialize() : void</text
       ><text x="591" y="545.1379" clip-path="url(#clipPath1)" fill="rgb(0,0,40)" stroke="none" font-weight="normal" space="preserve"
-      >+CatalogInitializer( videoCatalog : VideoCatalog )</text
+      >+CatalogInitializer( lebensmittelCatalog : VideoCatalog )</text
     ></g
     ><g font-style="italic" text-rendering="geometricPrecision" font-size="9" stroke-linecap="butt" stroke-linejoin="round"
     ><text x="710.5" space="preserve" y="533.2947" clip-path="url(#clipPath1)" stroke="none"
@@ -542,7 +542,7 @@ ZpMi8QAAAABJRU5ErkJggg==" height="16" preserveAspectRatio="none" font-weight="no
       /><polygon fill="none" points=" 588 546 583 544 576 546 583 548" clip-path="url(#clipPath1)"
       /><path fill="none" d="M437 546 L576 546" clip-path="url(#clipPath1)"
       /><text fill="black" x="441" space="preserve" y="541.1379" clip-path="url(#clipPath1)" stroke="none"
-      >-videoCatalog</text
+      >-lebensmittelCatalog</text
       ><text fill="black" x="440" space="preserve" y="559.1379" clip-path="url(#clipPath1)" stroke="none"
       >1</text
       ><path fill="none" d="M568 382 L575 378 L568 374" clip-path="url(#clipPath1)"

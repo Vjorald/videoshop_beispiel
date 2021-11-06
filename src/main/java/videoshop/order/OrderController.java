@@ -15,7 +15,7 @@
  */
 package videoshop.order;
 
-import videoshop.catalog.Disc;
+import videoshop.catalog.Lebensmittel;
 
 import java.util.Optional;
 
@@ -76,36 +76,57 @@ class OrderController {
 	}
 
 	/**
-	 * Adds a {@link Disc} to the {@link Cart}. Note how the type of the parameter taking the request parameter
-	 * {@code pid} is {@link Disc}. For all domain types extending {@link AbstractEntity} (directly or indirectly) a tiny
+	 * Adds a {@link Lebensmittel} to the {@link Cart}. Note how the type of the parameter taking the request parameter
+	 * {@code pid} is {@link Lebensmittel}. For all domain types extending {@link AbstractEntity} (directly or indirectly) a tiny
 	 * Salespoint extension will directly load the object instance from the database. If the identifier provided is
 	 * invalid (invalid format or no {@link Product} with the id found), {@literal null} will be handed into the method.
 	 *
-	 * @param disc the disc that should be added to the cart (may be {@literal null}).
+	 * @param lebensmittel the food that should be added to the cart (may be {@literal null}).
 	 * @param number number of discs that should be added to the cart.
 	 * @param cart must not be {@literal null}.
 	 * @return the view name.
 	 */
 	@PostMapping("/cart")
-	String addDisc(@RequestParam("pid") Disc disc, @RequestParam("number") int number, @ModelAttribute Cart cart) {
+	String addLebensmittel(@RequestParam("pid") Lebensmittel lebensmittel, @RequestParam("number") int number, @ModelAttribute Cart cart) {
 
 		// (｡◕‿◕｡)
 		// Das Inputfeld im View ist eigentlich begrenzt, allerdings sollte man immer auch serverseitig validieren
 		int amount = number <= 0 || number > 5 ? 1 : number;
 
 		// (｡◕‿◕｡)
-		// Wir fügen dem Warenkorb die Disc in entsprechender Anzahl hinzu.
-		cart.addOrUpdateItem(disc, Quantity.of(amount));
+		// Wir fügen dem Warenkorb die Lebensmittel in entsprechender Anzahl hinzu.
+		cart.addOrUpdateItem(lebensmittel, Quantity.of(amount));
 
 		// (｡◕‿◕｡)
 		// Je nachdem ob disc eine DVD oder eine Bluray ist, leiten wir auf die richtige Seite weiter
 
-		switch (disc.getType()) {
-			case DVD:
-				return "redirect:dvds";
-			case BLURAY:
+		switch (lebensmittel.getType()) {
+			case Backzutaten:
+				return "redirect:backzutaten";
+			case Brotaufstrich:
+				return "redirect:brotaufstrich";
+			case Cerealien:
+				return "redirect:cerealien";
+			case Frische_und_Kuehlung:
+				return "redirect:frische_und_kuehlung";
+			case Getraenke:
+				return "redirect:getraenke";
+			case Getreide:
+				return "redirect:getreide";
+			case Kaffe_und_Tee:
+				return "redirect:kaffe_und_tee";
+			case Konserven_und_fertiggerichte:
+				return "redirect:konserven_und_fertiggerichte";
+			case Milch_und_Milchersatzprodukte:
+				return "redirect:milch_und_milchersatzprodukte";
+			case Oel_Essig_Gewuerze:
+				return "redirect:oel_essig_gewuerze";
+			case Snacks:
+				return "redirect:snacks";
+			case Suessigkeiten:
+				return "redirect:suessigkeiten";
 			default:
-				return "redirect:blurays";
+				return "redirect:backzutaten";
 		}
 	}
 

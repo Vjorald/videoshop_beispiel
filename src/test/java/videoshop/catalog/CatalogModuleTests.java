@@ -33,7 +33,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @ModuleTest(mode = BootstrapMode.DIRECT_DEPENDENCIES)
 class CatalogModuleTests {
 
-	@Autowired VideoCatalog catalog;
+	@Autowired
+    LebensmittelCatalog catalog;
 	@Autowired ConfigurableApplicationContext context;
 
 	@Test // #100

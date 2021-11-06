@@ -17,7 +17,7 @@ package videoshop.catalog;
 
 import static org.salespointframework.core.Currencies.*;
 
-import videoshop.catalog.Disc.DiscType;
+import videoshop.catalog.Lebensmittel.LebensmittelType;
 
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.DataInitializer;
@@ -40,13 +40,13 @@ class CatalogDataInitializer implements DataInitializer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(CatalogDataInitializer.class);
 
-	private final VideoCatalog videoCatalog;
+	private final LebensmittelCatalog lebensmittelCatalog;
 
-	CatalogDataInitializer(VideoCatalog videoCatalog) {
+	CatalogDataInitializer(LebensmittelCatalog lebensmittelCatalog) {
 
-		Assert.notNull(videoCatalog, "VideoCatalog must not be null!");
+		Assert.notNull(lebensmittelCatalog, "LebensmittelCatalog must not be null!");
 
-		this.videoCatalog = videoCatalog;
+		this.lebensmittelCatalog = lebensmittelCatalog;
 	}
 
 	/*
@@ -56,36 +56,34 @@ class CatalogDataInitializer implements DataInitializer {
 	@Override
 	public void initialize() {
 
-		if (videoCatalog.findAll().iterator().hasNext()) {
+		if (lebensmittelCatalog.findAll().iterator().hasNext()) {
 			return;
 		}
 
 		LOG.info("Creating default catalog entries.");
 
-		videoCatalog.save(new Disc("Last Action Hero", "lac", Money.of(100, EURO), "Äktschn/Comedy", DiscType.DVD));
-		videoCatalog.save(new Disc("Back to the Future", "bttf", Money.of(9.99, EURO), "Sci-Fi", DiscType.DVD));
-		videoCatalog.save(new Disc("Fido", "fido", Money.of(9.99, EURO), "Comedy/Drama/Horror", DiscType.DVD));
-		videoCatalog.save(new Disc("Super Fuzz", "sf", Money.of(9.99, EURO), "Action/Sci-Fi/Comedy", DiscType.DVD));
-		videoCatalog.save(new Disc("Armour of God II: Operation Condor", "aog2oc", Money.of(14.99, EURO),
-				"Action/Adventure/Comedy", DiscType.DVD));
-		videoCatalog.save(new Disc("Persepolis", "pers", Money.of(14.99, EURO), "Animation/Biography/Drama", DiscType.DVD));
-		videoCatalog
-				.save(new Disc("Hot Shots! Part Deux", "hspd", Money.of(9999.0, EURO), "Action/Comedy/War", DiscType.DVD));
-		videoCatalog.save(new Disc("Avatar: The Last Airbender", "tla", Money.of(19.99, EURO), "Animation/Action/Adventure",
-				DiscType.DVD));
+		lebensmittelCatalog.save(new Lebensmittel("Demerara Zucker", "", Money.of(3.99, EURO), LebensmittelType.Backzutaten));
+		lebensmittelCatalog.save(new Lebensmittel("Rohrzucker", "", Money.of(2.57, EURO), LebensmittelType.Backzutaten));
+		lebensmittelCatalog.save(new Lebensmittel("Agavendicksaft", "", Money.of(6.92, EURO), LebensmittelType.Backzutaten));
+		lebensmittelCatalog.save(new Lebensmittel("Ahornsirup", "", Money.of(11.75, EURO), LebensmittelType.Backzutaten));
+		lebensmittelCatalog.save(new Lebensmittel("Dattelsirup", "", Money.of(9.99, EURO), LebensmittelType.Backzutaten));
+		lebensmittelCatalog.save(new Lebensmittel("Artischokencreme", "", Money.of(4.99, EURO), LebensmittelType.Brotaufstrich));
+		lebensmittelCatalog
+				.save(new Lebensmittel("Aubergine Streichcreme", "", Money.of(3.97, EURO), LebensmittelType.Brotaufstrich));
+		lebensmittelCatalog.save(new Lebensmittel("Bohnen Paprika Chili Aufstrich", "", Money.of(7.52, EURO),
+				LebensmittelType.Brotaufstrich));
 
-		videoCatalog.save(new Disc("Secretary", "secretary", Money.of(6.99, EURO), "Political Drama", DiscType.BLURAY));
-		videoCatalog.save(new Disc("The Godfather", "tg", Money.of(19.99, EURO), "Crime/Drama", DiscType.BLURAY));
-		videoCatalog
-				.save(new Disc("No Retreat, No Surrender", "nrns", Money.of(29.99, EURO), "Martial Arts", DiscType.BLURAY));
-		videoCatalog
-				.save(new Disc("The Princess Bride", "tpb", Money.of(39.99, EURO), "Adventure/Comedy/Family", DiscType.BLURAY));
-		videoCatalog.save(new Disc("Top Secret!", "ts", Money.of(39.99, EURO), "Comedy", DiscType.BLURAY));
-		videoCatalog
-				.save(new Disc("The Iron Giant", "tig", Money.of(34.99, EURO), "Animation/Action/Adventure", DiscType.BLURAY));
-		videoCatalog.save(new Disc("Battle Royale", "br", Money.of(19.99, EURO), "Action/Drama/Thriller", DiscType.BLURAY));
-		videoCatalog.save(new Disc("Oldboy", "old", Money.of(24.99, EURO), "Action/Drama/Thriller", DiscType.BLURAY));
-		videoCatalog.save(new Disc("Bill & Ted's Excellent Adventure", "bt", Money.of(29.99, EURO),
-				"Adventure/Comedy/Family", DiscType.BLURAY));
+		lebensmittelCatalog.save(new Lebensmittel("Curry Mango Streichcreme", "", Money.of(3.92, EURO), LebensmittelType.Brotaufstrich));
+		lebensmittelCatalog.save(new Lebensmittel("Cornflakes gesüsst", "", Money.of(5.99, EURO), LebensmittelType.Cerealien));
+		lebensmittelCatalog
+				.save(new Lebensmittel("Cornflakes, Vollkorn", "", Money.of(4.13, EURO), LebensmittelType.Cerealien));
+		lebensmittelCatalog
+				.save(new Lebensmittel("Dinkelflakes, Vollkorn", "", Money.of(6.22, EURO), LebensmittelType.Cerealien));
+		lebensmittelCatalog.save(new Lebensmittel("Crunchy Klassik", "", Money.of(5.73, EURO), LebensmittelType.Cerealien));
+		lebensmittelCatalog
+				.save(new Lebensmittel("Artichoken", "", Money.of(7.34, EURO), LebensmittelType.Frische_und_Kuehlung));
+		lebensmittelCatalog.save(new Lebensmittel("CousCous-Salat", "", Money.of(6.34, EURO), LebensmittelType.Frische_und_Kuehlung));
+		lebensmittelCatalog.save(new Lebensmittel("Getrocknete Tomaten", "", Money.of(3.44, EURO), LebensmittelType.Frische_und_Kuehlung));
+		lebensmittelCatalog.save(new Lebensmittel("Grüne Oliven mit Mandeln", "", Money.of(5.89, EURO), LebensmittelType.Frische_und_Kuehlung));
 	}
 }

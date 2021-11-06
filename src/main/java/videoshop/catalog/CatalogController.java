@@ -15,7 +15,7 @@
  */
 package videoshop.catalog;
 
-import videoshop.catalog.Disc.DiscType;
+import videoshop.catalog.Lebensmittel.LebensmittelType;
 
 import java.time.LocalDateTime;
 
@@ -39,32 +39,122 @@ class CatalogController {
 
 	private static final Quantity NONE = Quantity.of(0);
 
-	private final VideoCatalog catalog;
+	private final LebensmittelCatalog catalog;
 	private final UniqueInventory<UniqueInventoryItem> inventory;
 	private final BusinessTime businessTime;
 
-	CatalogController(VideoCatalog videoCatalog, UniqueInventory<UniqueInventoryItem> inventory,
-			BusinessTime businessTime) {
+	CatalogController(LebensmittelCatalog lebensmittelCatalog, UniqueInventory<UniqueInventoryItem> inventory,
+					  BusinessTime businessTime) {
 
-		this.catalog = videoCatalog;
+		this.catalog = lebensmittelCatalog;
 		this.inventory = inventory;
 		this.businessTime = businessTime;
 	}
 
-	@GetMapping("/dvds")
-	String dvdCatalog(Model model) {
+	@GetMapping("/backzutaten")
+	String backzutatenCatalog(Model model) {
 
-		model.addAttribute("catalog", catalog.findByType(DiscType.DVD));
-		model.addAttribute("title", "catalog.dvd.title");
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Backzutaten));
+		model.addAttribute("title", "catalog.backzutaten.title");
 
 		return "catalog";
 	}
 
-	@GetMapping("/blurays")
-	String blurayCatalog(Model model) {
+	@GetMapping("/brotaufstrich")
+	String brotaufstrichCatalog(Model model) {
 
-		model.addAttribute("catalog", catalog.findByType(DiscType.BLURAY));
-		model.addAttribute("title", "catalog.bluray.title");
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Brotaufstrich));
+		model.addAttribute("title", "catalog.brotaufstriche.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/cerealien")
+	String cerealienCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Cerealien));
+		model.addAttribute("litle", "catalog.cerealien.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/frische_und_kuehlung")
+	String frische_und_kuehlungCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Frische_und_Kuehlung));
+		model.addAttribute("title", "catalog.frische_und_kuehlung.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/getraenke")
+	String getraenkeCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Getraenke));
+		model.addAttribute("title", "catalog.getraenke.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/getreide")
+	String getreideCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Getreide));
+		model.addAttribute("title", "catalog.getreide.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/kaffe_und_tee")
+	String kaffe_und_tee_Catalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Kaffe_und_Tee));
+		model.addAttribute("title", "catalog.kaffe_und_tee.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/konserven_und_fertiggerichte")
+	String Konserven_und_fertiggerichte_Catalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Konserven_und_fertiggerichte));
+		model.addAttribute("title", "catalog.konserven_und_fertiggerichte.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/milch_und_milchersatzprodukte")
+				String milch_und_milchersatzprodukte_Catalog(Model model) {
+
+			model.addAttribute("catalog", catalog.findByType(LebensmittelType.Milch_und_Milchersatzprodukte));
+			model.addAttribute("title", "catalog.milch_und_milchersatzprodukte.title");
+
+			return "catalog";
+	}
+
+	@GetMapping("/oel_essig_gewuerze")
+	String oel_essig_gewuerze_Catalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Oel_Essig_Gewuerze));
+		model.addAttribute("title", "catalog.oel_essig_gewuerze.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/snacks")
+	String snacksCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Snacks));
+		model.addAttribute("title", "catalog.snacks.title");
+
+		return "catalog";
+	}
+
+	@GetMapping("/suessigkeiten")
+	String suessigkeitenCatalog(Model model) {
+
+		model.addAttribute("catalog", catalog.findByType(LebensmittelType.Suessigkeiten));
+		model.addAttribute("title", "catalog.suessigkeiten.title");
 
 		return "catalog";
 	}
@@ -72,14 +162,14 @@ class CatalogController {
 	// (｡◕‿◕｡)
 	// Befindet sich die angesurfte Url in der Form /foo/5 statt /foo?bar=5 so muss man @PathVariable benutzen
 	// Lektüre: http://spring.io/blog/2009/03/08/rest-in-spring-3-mvc/
-	@GetMapping("/disc/{disc}")
-	String detail(@PathVariable Disc disc, Model model) {
+	@GetMapping("/lebensmittel/{lebensmittel}")
+	String detail(@PathVariable Lebensmittel lebensmittel, Model model) {
 
-		var quantity = inventory.findByProductIdentifier(disc.getId()) //
+		var quantity = inventory.findByProductIdentifier(lebensmittel.getId()) //
 				.map(InventoryItem::getQuantity) //
 				.orElse(NONE);
 
-		model.addAttribute("disc", disc);
+		model.addAttribute("lebensmittel", lebensmittel);
 		model.addAttribute("quantity", quantity);
 		model.addAttribute("orderable", quantity.isGreaterThan(NONE));
 
@@ -89,13 +179,13 @@ class CatalogController {
 	// (｡◕‿◕｡)
 	// Der Katalog bzw die Datenbank "weiß" nicht, dass die Disc mit einem Kommentar versehen wurde,
 	// deswegen wird die update-Methode aufgerufen
-	@PostMapping("/disc/{disc}/comments")
-	public String comment(@PathVariable Disc disc, @Valid CommentAndRating payload) {
+	@PostMapping("/lebensmittel/{lebensmittel}/comments")
+	public String comment(@PathVariable Lebensmittel lebensmittel, @Valid CommentAndRating payload) {
 
-		disc.addComment(payload.toComment(businessTime.getTime()));
-		catalog.save(disc);
+		lebensmittel.addComment(payload.toComment(businessTime.getTime()));
+		catalog.save(lebensmittel);
 
-		return "redirect:/disc/" + disc.getId();
+		return "redirect:/lebensmittel/" + lebensmittel.getId();
 	}
 
 	/**
